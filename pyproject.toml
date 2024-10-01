@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "idol-m@ster-live-server-management-bot"
+version = "0.1.0"
+description = ""
+authors = ["somakai_sumasi"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+discord-py = "^2.4.0"
+black = "^24.8.0"
+flake8 = "^7.1.1"
+python-dotenv = "^1.0.1"
+isort = "^5.13.2"
+argparse = "^1.4.0"
+sqlalchemy = "^2.0.35"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
