@@ -1,5 +1,5 @@
 import os
 
 TOKEN = str(os.getenv("TOKEN"))
-
-MANAGEMENT_GUILD_ID = int(os.getenv("MANAGEMENT_GUILD_ID"))
+NOTIFICATION_CHANNEL_ID = int(os.getenv("NOTIFICATION_CHANNEL_ID"))
+BOTTOM_CHANNEL_ID = int(os.getenv("BOTTOM_CHANNEL_ID"))
