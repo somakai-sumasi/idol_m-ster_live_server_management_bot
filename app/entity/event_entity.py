@@ -3,8 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class EventEntity:
-    """イベント
-    """
+    """イベント"""
 
     scheduled_event_id: int
     """イベントid

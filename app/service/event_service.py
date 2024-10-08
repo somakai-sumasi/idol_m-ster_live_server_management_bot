@@ -1,12 +1,7 @@
 import discord
-
-# from common.user_message import MessageType
-# from discord.ext import commands
-# from service.presence_service import PresenceService
-# from service.read_service import ReadService
+from config.discord import BOTTOM_CHANNEL_ID, NOTIFICATION_CHANNEL_ID
 from entity.event_entity import EventEntity
 from repository.event_repository import EventRepository
-from config.discord import NOTIFICATION_CHANNEL_ID, BOTTOM_CHANNEL_ID
 
 
 class EventService:
@@ -25,7 +20,9 @@ class EventService:
             overwrites=overwrites,
             position=guild_channel.position,
         )
-        await guild.create_text_channel("公式情報", category=category, position=0)
+        text_channel = await guild.create_text_channel(
+            "公式情報", category=category, position=0
+        )
         await guild.create_text_channel("大事な内容", category=category, position=1)
         await guild.create_text_channel("雑談", category=category, position=2)
 
@@ -33,11 +30,11 @@ class EventService:
             EventEntity(scheduled_event_id=scheduled_event.id, category_id=category.id),
         )
 
-        text_channel: discord.TextChannel = discord.utils.get(
+        notification_channel: discord.TextChannel = discord.utils.get(
             guild.channels, id=NOTIFICATION_CHANNEL_ID
         )
-
-        await text_channel.send(f"url: {scheduled_event.url}")
+        message = f"{text_channel.mention}\n[イベント内容]({scheduled_event.url})"
+        await notification_channel.send(message)
 
     @classmethod
     async def join_event(
