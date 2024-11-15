@@ -18,8 +18,10 @@ class EventService:
         category = await guild.create_category(
             name=scheduled_event.name,
             overwrites=overwrites,
-            position=guild_channel.position + 1,
         )
+
+        await category.move(after=guild_channel)
+
         text_channel = await guild.create_text_channel(
             "公式情報", category=category, position=0
         )
