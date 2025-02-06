@@ -35,8 +35,30 @@ class EventService:
         notification_channel: discord.TextChannel = discord.utils.get(
             guild.channels, id=NOTIFICATION_CHANNEL_ID
         )
-        message = f"{text_channel.mention}\n[イベント内容]({scheduled_event.url})"
+        calendar_url = cls.creation_calendar_url(scheduled_event)
+
+        message = (
+            f"{text_channel.mention}\n"
+            f"[イベント内容]({scheduled_event.url})\n"
+            f"[Googleカレンダーに追加]({calendar_url})\n"
+        )
+
         await notification_channel.send(message)
+
+    @classmethod
+    def creation_calendar_url(cls, scheduled_event: discord.ScheduledEvent) -> str:
+        google_calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE&"
+        text = scheduled_event.name
+        start_time = scheduled_event.start_time.strftime("%Y%m%dT%H%M%SZ")
+        end_time = scheduled_event.end_time.strftime("%Y%m%dT%H%M%SZ")
+        dates = f"{start_time}/{end_time}"
+        details = scheduled_event.description
+        location = scheduled_event.location
+
+        return (
+            f"{google_calendar_url}text={text}&dates={dates}"
+            f"&details={details}&location={location}"
+        )
 
     @classmethod
     async def join_event(
