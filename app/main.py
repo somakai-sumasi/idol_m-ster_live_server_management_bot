@@ -4,7 +4,10 @@ import discord
 from config.discord import TOKEN
 from discord.ext import commands
 
-INITIAL_EXTENSIONS = ["cogs.event"]
+INITIAL_EXTENSIONS = [
+    "cogs.event",
+    "cogs.preferences",
+]
 
 
 class MainBot(commands.Bot):
