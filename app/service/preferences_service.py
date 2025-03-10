@@ -67,7 +67,7 @@ class PreferencesService:
         preferences.add_field(name="", value="", inline=False)
         preferences.add_field(
             name="好きなアイドル",
-            value=" ".join(preferences_entity.favorite_idols),
+            value=",".join(preferences_entity.favorite_idols),
             inline=False,
         )
         await interaction.followup.send(embed=preferences)
