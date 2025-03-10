@@ -24,6 +24,15 @@ class Preferences(BaseUserCog):
             self.bot, interaction, search_name
         )
 
+    @app_commands.command(description="ユーザーの好きなアイドルを検索出来ます")
+    @app_commands.rename(member="検索するユーザー")
+    async def search_user_preferences(
+        self,
+        interaction: discord.Interaction,
+        member: discord.Member,
+    ):
+        await PreferencesService.search_user_preferences(interaction, member)
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Preferences(bot))

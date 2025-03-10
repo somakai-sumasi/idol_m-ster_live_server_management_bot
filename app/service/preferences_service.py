@@ -38,10 +38,38 @@ class PreferencesService:
         preferences.add_field(
             name="担当のユーザー", value=" ".join(tantou_users), inline=False
         )
+        preferences.add_field(name="", value="", inline=False)
         preferences.add_field(
             name="好きなユーザー", value=" ".join(favorite_users), inline=False
         )
 
+        await interaction.followup.send(embed=preferences)
+
+    @classmethod
+    async def search_user_preferences(
+        cls, interaction: discord.Interaction, member: discord.Member
+    ):
+        await interaction.response.defer()
+        preferences_entity = UserIdolPreferencesRepository.get_by_user_id(member.id)
+        preferences = discord.Embed()
+        preferences.set_author(name=member.display_name, icon_url=member.avatar.url)
+
+        if preferences_entity is None:
+            preferences.description = "登録情報がありません"
+            await interaction.followup.send(embed=preferences)
+            return
+
+        preferences.add_field(
+            name="担当アイドル",
+            value=",".join(preferences_entity.tantou_idols),
+            inline=False,
+        )
+        preferences.add_field(name="", value="", inline=False)
+        preferences.add_field(
+            name="好きなアイドル",
+            value=" ".join(preferences_entity.favorite_idols),
+            inline=False,
+        )
         await interaction.followup.send(embed=preferences)
 
     @classmethod
