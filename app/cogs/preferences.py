@@ -20,7 +20,9 @@ class Preferences(BaseUserCog):
     async def search_idol_preferences(
         self, interaction: discord.Interaction, search_name: str
     ):
-        await PreferencesService.search_idol_preferences(interaction, search_name)
+        await PreferencesService.search_idol_preferences(
+            self.bot, interaction, search_name
+        )
 
 
 async def setup(bot: commands.Bot):

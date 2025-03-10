@@ -2,6 +2,7 @@ import discord
 from repository.user_idol_preference_repository import UserIdolPreferencesRepository
 from entity.user_idol_preference_entity import UserIdolPreferencesEntity
 import re
+from discord.ext import commands
 
 
 class PreferencesService:
@@ -15,7 +16,7 @@ class PreferencesService:
 
     @classmethod
     async def search_idol_preferences(
-        cls, interaction: discord.Interaction, search_name
+        cls, bot: commands.Bot, interaction: discord.Interaction, search_name
     ):
         await interaction.response.defer()
 
@@ -24,10 +25,24 @@ class PreferencesService:
             search_name
         )
 
-        print(tantou_preferences)
-        print(favorite_preferences)
+        tantou_users = [
+            bot.get_user(preference.user_id).mention
+            for preference in tantou_preferences
+        ]
+        favorite_users = [
+            bot.get_user(preference.user_id).mention
+            for preference in favorite_preferences
+        ]
 
-        await interaction.followup.send("aaa")
+        preferences = discord.Embed(title=f"{search_name}での検索結果")
+        preferences.add_field(
+            name="担当のユーザー", value=" ".join(tantou_users), inline=False
+        )
+        preferences.add_field(
+            name="好きなユーザー", value=" ".join(favorite_users), inline=False
+        )
+
+        await interaction.followup.send(embed=preferences)
 
     @classmethod
     def update_idol_preferences(
