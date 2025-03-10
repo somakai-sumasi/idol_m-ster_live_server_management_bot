@@ -40,7 +40,7 @@ class PreferencesService:
         )
         preferences.add_field(name="", value="", inline=False)
         preferences.add_field(
-            name="好きなユーザー", value=" ".join(favorite_users), inline=False
+            name="推しのユーザー", value=" ".join(favorite_users), inline=False
         )
 
         await interaction.followup.send(embed=preferences)
@@ -66,7 +66,7 @@ class PreferencesService:
         )
         preferences.add_field(name="", value="", inline=False)
         preferences.add_field(
-            name="好きなアイドル",
+            name="推しのアイドル",
             value=",".join(preferences_entity.favorite_idols),
             inline=False,
         )
@@ -99,7 +99,7 @@ class IdolPreferences(discord.ui.Modal):
             "" if self.is_new_data else "\n".join(preferences_entity.tantou_idols),
         )
         self.favorite_input = Input(
-            "好きなアイドル",
+            "推しのアイドル",
             "" if self.is_new_data else "\n".join(preferences_entity.favorite_idols),
         )
 
