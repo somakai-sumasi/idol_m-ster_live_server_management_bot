@@ -4,9 +4,9 @@ import sys
 
 
 async def func(bot: discord.Client):
-    guid: discord.Guild = await bot.fetch_guild(713594826343579681)
-    channel: discord.TextChannel = await guid.fetch_channel(713601276465905715)
-    message: discord.Message = await channel.fetch_message(1348584964253552660)
+    guid: discord.Guild = await bot.fetch_guild(1287057723363688521)
+    channel: discord.TextChannel = await guid.fetch_channel(1288306808850612315)
+    message: discord.Message = await channel.fetch_message(1348693353155395625)
     content = (
         "<#1348693348537335858>\n"
         "[イベント内容](https://discord.com/events/1287057723363688521/1348693337632407614)\n"
