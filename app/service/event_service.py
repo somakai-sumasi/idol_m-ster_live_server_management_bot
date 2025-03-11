@@ -2,6 +2,7 @@ import discord
 from config.discord import BOTTOM_CHANNEL_ID, NOTIFICATION_CHANNEL_ID
 from entity.event_entity import EventEntity
 from repository.event_repository import EventRepository
+import urllib.parse
 
 
 class EventService:
@@ -48,12 +49,12 @@ class EventService:
     @classmethod
     def creation_calendar_url(cls, scheduled_event: discord.ScheduledEvent) -> str:
         google_calendar_url = "https://www.google.com/calendar/render?action=TEMPLATE&"
-        text = scheduled_event.name
+        text = urllib.parse.quote(scheduled_event.name)
         start_time = scheduled_event.start_time.strftime("%Y%m%dT%H%M%SZ")
         end_time = scheduled_event.end_time.strftime("%Y%m%dT%H%M%SZ")
         dates = f"{start_time}/{end_time}"
-        details = scheduled_event.description
-        location = scheduled_event.location
+        details = urllib.parse.quote(scheduled_event.description)
+        location = urllib.parse.quote(scheduled_event.location)
 
         return (
             f"{google_calendar_url}text={text}&dates={dates}"
