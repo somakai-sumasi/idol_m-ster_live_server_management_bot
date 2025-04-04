@@ -3,6 +3,7 @@ import logging
 import discord
 from config.discord import TOKEN
 from discord.ext import commands
+from service.event_service import PersistentView
 
 INITIAL_EXTENSIONS = [
     "cogs.event",
@@ -18,6 +19,8 @@ class MainBot(commands.Bot):
     async def setup_hook(self):
         for cog in INITIAL_EXTENSIONS:
             await self.load_extension(cog)
+
+        self.add_view(PersistentView())
 
     async def on_ready(self):
         print(f"Logged in as {self.user} (ID: {self.user.id})")

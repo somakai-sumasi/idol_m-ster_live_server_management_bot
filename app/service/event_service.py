@@ -44,7 +44,7 @@ class EventService:
             f"[Googleカレンダーに追加]({calendar_url})\n"
         )
 
-        await notification_channel.send(message)
+        await notification_channel.send(content=message, view=PersistentView())
 
     @classmethod
     def creation_calendar_url(cls, scheduled_event: discord.ScheduledEvent) -> str:
@@ -72,3 +72,28 @@ class EventService:
         await category.set_permissions(
             target=user, read_messages=True, send_messages=True
         )
+
+    @classmethod
+    async def leave_event(
+        cls, scheduled_event: discord.ScheduledEvent, user: discord.User
+    ):
+        event = EventRepository.wait_for_get_by_scheduled_event_id(scheduled_event.id)
+
+        guild = scheduled_event.guild
+        category = discord.utils.get(guild.categories, id=event.category_id)
+        await category.set_permissions(
+            target=user, read_messages=False, send_messages=False
+        )
+
+
+class PersistentView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(
+        label="Red", style=discord.ButtonStyle.red, custom_id="persistent_view:red"
+    )
+    async def red(self, interaction: discord.Interaction, button: discord.ui.Button):
+        text = interaction.message.content
+        print(text)
+        await interaction.response.send_message(f"This is red.{text}", ephemeral=True)

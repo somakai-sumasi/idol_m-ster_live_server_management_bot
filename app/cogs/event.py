@@ -18,6 +18,12 @@ class Event(BaseUserCog):
     ):
         await EventService.join_event(event, user)
 
+    @commands.Cog.listener()
+    async def on_scheduled_event_user_remove(
+        self, event: discord.ScheduledEvent, user: discord.User
+    ):
+        await EventService.leave_event(event, user)
+
 
 async def setup(bot: commands.Bot):
     await bot.add_cog(Event(bot))
