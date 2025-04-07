@@ -1,4 +1,4 @@
-from modifications.modifications_0000 import run_bot
+from ops.ops_0000 import run_bot
 import discord
 import sys
 
