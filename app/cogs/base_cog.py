@@ -1,6 +1,7 @@
 import discord
-from app.common.args import args
 from discord.ext import commands
+
+from app.common.args import args
 
 
 class BaseUserCog(commands.Cog):

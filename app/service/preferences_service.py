@@ -2,6 +2,7 @@ import re
 
 import discord
 from discord.ext import commands
+
 from app.entity.user_idol_preference_entity import UserIdolPreferencesEntity
 from app.repository.user_idol_preference_repository import UserIdolPreferencesRepository
 

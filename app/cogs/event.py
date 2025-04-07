@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
-from app.service.event_service import EventService
 
 from app.cogs.base_cog import BaseUserCog
+from app.service.event_service import EventService
 
 
 class Event(BaseUserCog):
