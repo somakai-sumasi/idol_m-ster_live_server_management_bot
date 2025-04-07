@@ -1,5 +1,6 @@
-from common.db_setting import Base
 from sqlalchemy import Column, Integer
+
+from db.setting import Base
 
 
 class Event(Base):
@@ -17,4 +18,7 @@ class Event(Base):
     """
     category_id = Column(Integer)
     """カテゴリーid
+    """
+    message_id = Column(Integer)
+    """メッセージid
     """

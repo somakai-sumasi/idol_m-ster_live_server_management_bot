@@ -1,6 +1,6 @@
-import sys
 import os
 import runpy
+import sys
 
 
 def main():
@@ -11,10 +11,10 @@ def main():
     script_name = sys.argv[1]
 
     # 実行するスクリプトのフルパス
-    script_path = os.path.join(os.path.dirname(__file__), "modifications", script_name)
+    script_path = os.path.join(os.path.dirname(__file__), "ops", script_name)
 
     if not os.path.isfile(script_path):
-        print(f"Error: Script '{script_name}' not found in modifications/")
+        print(f"Error: Script '{script_name}' not found in ops/")
         sys.exit(1)
 
     # スクリプトを実行

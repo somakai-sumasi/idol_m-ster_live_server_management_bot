@@ -1,5 +1,6 @@
-from common.db_setting import Base
-from sqlalchemy import Column, Integer, JSON
+from sqlalchemy import JSON, Column, Integer
+
+from db.setting import Base
 
 
 class UserIdolPreferences(Base):

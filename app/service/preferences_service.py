@@ -1,8 +1,10 @@
-import discord
-from repository.user_idol_preference_repository import UserIdolPreferencesRepository
-from entity.user_idol_preference_entity import UserIdolPreferencesEntity
 import re
+
+import discord
 from discord.ext import commands
+
+from app.entity.user_idol_preference_entity import UserIdolPreferencesEntity
+from app.repository.user_idol_preference_repository import UserIdolPreferencesRepository
 
 
 class PreferencesService:
@@ -52,7 +54,11 @@ class PreferencesService:
         await interaction.response.defer()
         preferences_entity = UserIdolPreferencesRepository.get_by_user_id(member.id)
         preferences = discord.Embed()
-        preferences.set_author(name=member.display_name, icon_url=member.avatar.url)
+
+        icon_url = (
+            member.avatar is None and member.default_avatar.url or member.avatar.url
+        )
+        preferences.set_author(name=member.display_name, icon_url=icon_url)
 
         if preferences_entity is None:
             preferences.description = "登録情報がありません"

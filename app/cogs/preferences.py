@@ -1,8 +1,9 @@
 import discord
-from cogs.base_cog import BaseUserCog
-from discord.ext import commands
-from service.preferences_service import PreferencesService
 from discord import app_commands
+from discord.ext import commands
+
+from app.cogs.base_cog import BaseUserCog
+from app.service.preferences_service import PreferencesService
 
 
 class Preferences(BaseUserCog):

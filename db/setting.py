@@ -1,8 +1,10 @@
-from config.db import DB_NAME
+import json
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
-import json
+
+from config.db import DB_NAME
 
 DATABASE = "sqlite:///" + DB_NAME
 

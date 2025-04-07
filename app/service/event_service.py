@@ -1,8 +1,10 @@
-import discord
-from config.discord import BOTTOM_CHANNEL_ID, NOTIFICATION_CHANNEL_ID
-from entity.event_entity import EventEntity
-from repository.event_repository import EventRepository
 import urllib.parse
+
+import discord
+
+from app.entity.event_entity import EventEntity
+from app.repository.event_repository import EventRepository
+from config.discord import BOTTOM_CHANNEL_ID, NOTIFICATION_CHANNEL_ID
 
 
 class EventService:

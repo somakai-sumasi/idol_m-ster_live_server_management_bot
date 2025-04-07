@@ -1,6 +1,7 @@
 import discord
-from config.discord import TOKEN
 from discord.ext import commands
+
+from config.discord import TOKEN
 
 
 class BaseBot(commands.Bot):
