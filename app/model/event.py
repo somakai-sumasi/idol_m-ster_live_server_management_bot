@@ -19,3 +19,6 @@ class Event(Base):
     category_id = Column(Integer)
     """カテゴリーid
     """
+    message_id = Column(Integer)
+    """メッセージid
+    """

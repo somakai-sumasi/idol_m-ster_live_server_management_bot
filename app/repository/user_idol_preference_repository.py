@@ -1,6 +1,5 @@
 from dataclasses import asdict
 
-from db.setting import session
 from app.common.model_entity_converter import (
     entity_to_model,
     model_to_entity,
@@ -8,6 +7,7 @@ from app.common.model_entity_converter import (
 )
 from app.entity.user_idol_preference_entity import UserIdolPreferencesEntity
 from app.model.user_idol_preferences import UserIdolPreferences
+from db.setting import session
 
 
 class UserIdolPreferencesRepository:

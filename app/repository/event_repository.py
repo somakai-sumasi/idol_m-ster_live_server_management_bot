@@ -1,10 +1,10 @@
 import time
 from dataclasses import asdict
 
-from db.setting import session
 from app.common.model_entity_converter import entity_to_model, model_to_entity
 from app.entity.event_entity import EventEntity
 from app.model.event import Event
+from db.setting import session
 
 
 class EventRepository:
