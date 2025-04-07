@@ -1,4 +1,4 @@
-from common.db_setting import Base
+from app.common.db_setting import Base
 from sqlalchemy import Column, Integer
 
 

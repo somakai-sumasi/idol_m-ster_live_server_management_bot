@@ -1,13 +1,13 @@
 from dataclasses import asdict
 
-from common.db_setting import session
-from common.model_entity_converter import (
+from app.common.db_setting import session
+from app.common.model_entity_converter import (
     entity_to_model,
     model_to_entity,
     models_to_entities,
 )
-from entity.user_idol_preference_entity import UserIdolPreferencesEntity
-from model.user_idol_preferences import UserIdolPreferences
+from app.entity.user_idol_preference_entity import UserIdolPreferencesEntity
+from app.model.user_idol_preferences import UserIdolPreferences
 
 
 class UserIdolPreferencesRepository:

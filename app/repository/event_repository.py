@@ -1,10 +1,10 @@
 import time
 from dataclasses import asdict
 
-from common.db_setting import session
-from common.model_entity_converter import entity_to_model, model_to_entity
-from entity.event_entity import EventEntity
-from model.event import Event
+from app.common.db_setting import session
+from app.common.model_entity_converter import entity_to_model, model_to_entity
+from app.entity.event_entity import EventEntity
+from app.model.event import Event
 
 
 class EventRepository:

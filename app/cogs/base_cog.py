@@ -1,5 +1,5 @@
 import discord
-from common.args import args
+from app.common.args import args
 from discord.ext import commands
 
 
