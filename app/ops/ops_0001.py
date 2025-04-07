@@ -1,7 +1,7 @@
 import sys
 
 import discord
-from ops.ops_0000 import run_bot
+from app.ops.ops_0000 import run_bot
 
 
 async def func(bot: discord.Client):

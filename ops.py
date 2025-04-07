@@ -11,7 +11,7 @@ def main():
     script_name = sys.argv[1]
 
     # 実行するスクリプトのフルパス
-    script_path = os.path.join(os.path.dirname(__file__), "ops", script_name)
+    script_path = os.path.join(os.path.dirname(__file__), "app/ops", script_name)
 
     if not os.path.isfile(script_path):
         print(f"Error: Script '{script_name}' not found in ops/")

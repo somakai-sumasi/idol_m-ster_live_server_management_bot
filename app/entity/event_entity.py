@@ -11,3 +11,6 @@ class EventEntity:
     category_id: int
     """カテゴリーid
     """
+    message_id: int
+    """メッセージid
+    """
