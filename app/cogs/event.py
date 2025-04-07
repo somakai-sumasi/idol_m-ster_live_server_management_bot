@@ -14,10 +14,20 @@ class Event(BaseUserCog):
         await EventService.create_event(event)
 
     @commands.Cog.listener()
+    async def on_scheduled_event_delete(self, event: discord.ScheduledEvent):
+        await EventService.delete_event(event)
+
+    @commands.Cog.listener()
     async def on_scheduled_event_user_add(
         self, event: discord.ScheduledEvent, user: discord.User
     ):
         await EventService.join_event(event, user)
+
+    @commands.Cog.listener()
+    async def on_scheduled_event_user_remove(
+        self, event: discord.ScheduledEvent, user: discord.User
+    ):
+        await EventService.leave_event(event, user)
 
 
 async def setup(bot: commands.Bot):

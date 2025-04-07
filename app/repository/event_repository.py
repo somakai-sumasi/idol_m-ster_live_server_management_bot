@@ -58,6 +58,53 @@ class EventRepository:
         raise TimeoutError("指定された時間内にキーが見つかりませんでした。")
 
     @classmethod
+    def get_by_message_id(cls, message_id: int) -> EventEntity | None:
+        """イベントを検索
+
+        Parameters
+        ----------
+        message_id : int
+            message_id
+
+        Returns
+        -------
+        EventEntity | None
+            検索結果
+        """
+        voice_setting_model: Event = (
+            session.query(Event).filter_by(message_id=message_id).first()
+        )
+
+        if voice_setting_model is None:
+            return None
+
+        return model_to_entity(voice_setting_model, EventEntity)
+
+    @classmethod
+    def wait_for_get_by_message_id(
+        cls, message_id: int, timeout=1, interval=0.1
+    ) -> EventEntity:
+        """イベントを検索
+
+        Parameters
+        ----------
+        message_id : int
+            message_id
+
+        Returns
+        -------
+        EventEntity | None
+            検索結果
+        """
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            event = EventRepository.get_by_message_id(message_id)
+            if event:
+                return event
+            time.sleep(interval)
+        raise TimeoutError("指定された時間内にキーが見つかりませんでした。")
+
+    @classmethod
     def create(cls, event_entity: EventEntity) -> EventEntity:
         """作成
 
