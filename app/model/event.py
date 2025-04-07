@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer
 
-from app.common.db_setting import Base
+from db.setting import Base
 
 
 class Event(Base):

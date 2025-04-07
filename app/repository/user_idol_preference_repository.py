@@ -1,6 +1,6 @@
 from dataclasses import asdict
 
-from app.common.db_setting import session
+from db.setting import session
 from app.common.model_entity_converter import (
     entity_to_model,
     model_to_entity,
