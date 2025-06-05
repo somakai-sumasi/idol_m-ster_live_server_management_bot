@@ -92,11 +92,9 @@ class EventService:
         notification_channel: discord.TextChannel = discord.utils.get(
             guild.channels, id=NOTIFICATION_CHANNEL_ID
         )
-        # send_message = await notification_channel.send(
-        #     content=message, view=EventUiView()
-        # )
-
-        send_message = await notification_channel.send(content=message)
+        send_message = await notification_channel.send(
+            content=message, view=EventUiView()
+        )
 
         return send_message
 
