@@ -4,7 +4,6 @@ version = "0.1.0"
 description = ""
 authors = ["somakai_sumasi"]
 readme = "README.md"
-package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -16,6 +15,8 @@ isort = "^5.13.2"
 argparse = "^1.4.0"
 sqlalchemy = "^2.0.35"
 alembic = "^1.15.2"
+requests = "^2.32.4"
+beautifulsoup4 = "^4.13.4"
 
 
 [build-system]

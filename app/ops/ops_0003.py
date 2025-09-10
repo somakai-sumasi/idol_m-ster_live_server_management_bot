@@ -32,7 +32,5 @@ async def func(bot: discord.Client):
             view=EventUiView(),
         )
 
-    # sys.exit()
-
 
 run_bot(func)

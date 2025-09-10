@@ -2,8 +2,8 @@ import logging
 
 import discord
 from discord.ext import commands
-from app.service.event_service import EventUiView
 
+from app.service.event_service import EventUiView
 from config.discord import TOKEN
 
 INITIAL_EXTENSIONS = [

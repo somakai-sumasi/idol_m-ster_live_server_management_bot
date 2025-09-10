@@ -67,10 +67,14 @@ class EventService:
         await category.move(after=guild_channel)
 
         text_channel = await guild.create_text_channel(
-            "公式情報", category=category, position=0
+            "公式情報", category=category, position=0, topic=scheduled_event.name
         )
-        await guild.create_text_channel("大事な内容", category=category, position=1)
-        await guild.create_text_channel("雑談", category=category, position=2)
+        await guild.create_text_channel(
+            "大事な内容", category=category, position=1, topic=scheduled_event.name
+        )
+        await guild.create_text_channel(
+            "雑談", category=category, position=2, topic=scheduled_event.name
+        )
 
         return category, text_channel
 
