@@ -4,7 +4,7 @@ import discord
 
 from app.ops.ops_0000 import run_bot
 from app.repository.event_repository import EventRepository
-from app.service.event_service import EventUiView
+from app.service.event_service import EventUIView
 from config.discord import NOTIFICATION_CHANNEL_ID
 
 
@@ -29,7 +29,7 @@ async def func(bot: discord.Client):
 
         await message.edit(
             content=message.content,
-            view=EventUiView(),
+            view=EventUIView(),
         )
 
     # sys.exit()

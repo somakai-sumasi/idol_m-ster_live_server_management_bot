@@ -3,7 +3,7 @@ import logging
 import discord
 from discord.ext import commands
 
-from app.service.event_service import EventUiView
+from app.service.event_service import EventUIView
 from config.discord import TOKEN
 
 INITIAL_EXTENSIONS = [
@@ -21,7 +21,7 @@ class MainBot(commands.Bot):
         for cog in INITIAL_EXTENSIONS:
             await self.load_extension(cog)
 
-        self.add_view(EventUiView())
+        self.add_view(EventUIView())
 
     async def on_ready(self):
         print(f"Logged in as {self.user} (ID: {self.user.id})")
